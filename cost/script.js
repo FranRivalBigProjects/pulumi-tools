@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let r=+resources.value,c=+cost.value;if(!r||!c){res.innerText='Enter values';return;}res.innerText=`Total cost: $${(r*c).toFixed(2)}`;}

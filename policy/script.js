@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let p=(policy.value.match(/deny|allow/gi)||[]).length;res.innerText=`Policies: ${p}`;}

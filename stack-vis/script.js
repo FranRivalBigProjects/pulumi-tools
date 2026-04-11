@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let s=stack.value.split('\n').length;res.innerText=`Resources: ${s}`;}

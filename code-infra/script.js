@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let c=code.value.split('\n').length;res.innerText=`Lines: ${c}`;}

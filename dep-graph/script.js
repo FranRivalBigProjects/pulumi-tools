@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let d=deps.value.split('\n').length;res.innerText=`Dependencies: ${d}`;}

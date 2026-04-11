@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let s=state.value.split('\n').length;res.innerText=`Entries: ${s}`;}

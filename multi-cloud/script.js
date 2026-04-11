@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let c=cloud.value.split('\n').length;res.innerText=`Providers: ${c}`;}

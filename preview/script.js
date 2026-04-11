@@ -1,0 +1,1 @@
+const res=document.getElementById('res');function run(){let p=preview.value.split('\n').length;res.innerText=`Preview changes: ${p}`;}
