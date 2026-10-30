@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="PkLa_ViOo6FAHpvh8SacceMb95o9tePRdrqLNBz9X1M" />
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-snippet:-1">
 
-<title>Pulumi Cost Estimation – Pricing Calculator &amp; Infrastructure Cost Guide 2025</title>
+<title>Pulumi Cloud Pricing Calculator (2026) – Essentials, Pro &amp; Enterprise</title>
 
-<meta name="description" content="Pulumi cost estimation guide. Calculate Pulumi plan pricing (Free, Team, Enterprise), estimate AWS/GCP/Azure infrastructure costs from Pulumi stacks, and compare Infracost vs Pulumi cost tools. Free calculator.">
+<meta name="description" content="Free Pulumi Cloud pricing calculator. Enter your IaC resources, ESC secrets and workflow minutes to see monthly cost on Essentials, Pro and Enterprise. Current 2026 credit-based rates.">
 
-<meta name="keywords" content="pulumi cost estimation, pulumi pricing calculator, pulumi cost, pulumi plan pricing, infracost pulumi, pulumi infrastructure cost, pulumi free vs team vs enterprise, pulumi cost tool, pulumi aws cost estimation">
+<meta name="keywords" content="pulumi cloud pricing, pulumi pricing calculator, pulumi cost estimation, pulumi essentials vs pro, pulumi credits, pulumi cost per resource, pulumi enterprise pricing, pulumi free plan, pulumi vs terraform cost">
 
 <link rel="canonical" href="https://franrivalbigprojects.github.io/pulumi-tools/">
 
-<meta property="og:title" content="Pulumi Cost Estimation – Pricing Calculator and Infrastructure Cost Guide">
-<meta property="og:description" content="Calculate Pulumi plan pricing and estimate infrastructure costs from Pulumi stacks. Infracost comparison and cost optimization guide.">
+<meta property="og:title" content="Pulumi Cloud Pricing Calculator (2026)">
+<meta property="og:description" content="Estimate your monthly Pulumi Cloud bill by edition: resources, secrets, workflow minutes and Neo tokens. Compare Free, Essentials, Pro and Enterprise.">
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,488 +28,153 @@
   --surface: #0a0715;
   --surface2: #100c1e;
   --border: #171028;
-  --border2: #201840;
+  --border2: #2a2150;
   --pul: #a855f7;
-  --pul-dim: rgba(168,85,247,0.12);
-  --pul-dim2: rgba(168,85,247,0.05);
-  --pul-glow: rgba(168,85,247,0.18);
+  --pul-dim2: rgba(168,85,247,0.07);
   --green: #22c55e;
-  --green-dim: rgba(34,197,94,0.1);
-  --green-dim2: rgba(34,197,94,0.05);
-  --blue: #60a5fa;
-  --blue-dim: rgba(96,165,250,0.08);
-  --orange: #fb923c;
-  --orange-dim: rgba(251,146,60,0.08);
   --yellow: #fbbf24;
-  --yellow-dim: rgba(251,191,36,0.08);
   --red: #f87171;
-  --text: #c0b4e0;
-  --text-muted: #40306a;
-  --text-dim: #12082a;
+  --text: #d6ccf0;
+  --text-muted: #9a8fc4;
+  --text-dim: #6b5f9a;
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Inter', sans-serif;
   --r: 8px;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  line-height: 1.6;
-}
-
+body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; }
 body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 44px 44px;
-  opacity: 0.45;
-  pointer-events: none;
-  z-index: 0;
+  content: ""; position: fixed; inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 44px 44px; opacity: 0.4; pointer-events: none; z-index: 0;
 }
-
-header {
-  border-bottom: 1px solid var(--border2);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(6,4,15,0.97);
-  backdrop-filter: blur(12px);
-}
-
-.header-inner {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.logo-pill {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--pul);
-  background: var(--pul-dim2);
-  border: 1px solid rgba(168,85,247,0.3);
-  border-radius: 3px;
-  padding: 3px 9px;
-}
-
-.logo-text {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
+header { border-bottom: 1px solid var(--border2); position: sticky; top: 0; z-index: 100; background: rgba(6,4,15,0.97); backdrop-filter: blur(12px); }
+.header-inner { max-width: 1060px; margin: 0 auto; padding: 0 24px; height: 50px; display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+.logo-pill { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--pul); background: var(--pul-dim2); border: 1px solid rgba(168,85,247,0.3); border-radius: 3px; padding: 3px 9px; }
+.logo-text { font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
 .logo-text strong { color: var(--pul); font-weight: 500; }
+.wrapper { max-width: 1060px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 1; }
 
-.wrapper {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 0 24px 80px;
-  position: relative;
-  z-index: 1;
-}
-
-.hero {
-  padding: 48px 0 30px;
-  border-bottom: 1px solid var(--border2);
-  margin-bottom: 24px;
-}
-
-.hero-eyebrow {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--pul);
-  margin-bottom: 12px;
-  opacity: 0.8;
-}
-
-h1 {
-  font-size: clamp(22px, 3.2vw, 30px);
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
+.hero { padding: 44px 0 26px; }
+h1 { font-size: clamp(24px, 3.6vw, 34px); font-weight: 700; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em; line-height: 1.2; }
 h1 em { font-style: normal; color: var(--pul); }
-
-.hero-sub {
-  font-size: 15px;
-  color: var(--text-muted);
-  max-width: 620px;
-  line-height: 1.75;
-  margin-bottom: 16px;
-}
-
+.hero-sub { font-size: 15px; color: var(--text-muted); max-width: 680px; line-height: 1.75; margin-bottom: 14px; }
 .hero-sub strong { color: var(--text); }
+.meta-line { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+.meta-line a { color: var(--pul); }
 
-.pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
-
-.pill {
-  font-family: var(--mono);
-  font-size: 10px;
-  padding: 3px 9px;
-  border-radius: 3px;
-  border: 1px solid;
-}
-
-.pill-p  { color: var(--pul); background: var(--pul-dim2); border-color: rgba(168,85,247,0.3); }
-.pill-dim { color: var(--text-muted); border-color: var(--border2); }
-
-/* TABS */
-.calc-shell {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: var(--r);
-  overflow: hidden;
-  margin-bottom: 18px;
-}
-
-.calc-topbar {
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border2);
-  padding: 10px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.topbar-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.tab-row {
-  display: flex;
-  border-bottom: 1px solid var(--border2);
-  background: var(--bg);
-}
-
-.tab-btn {
-  padding: 10px 20px;
-  font-family: var(--mono);
-  font-size: 11px;
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  background: transparent;
-  color: var(--text-muted);
-  transition: all 0.15s;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
+/* CALC */
+.calc-shell { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r); overflow: hidden; margin-bottom: 18px; }
+.tab-row { display: flex; border-bottom: 1px solid var(--border2); background: var(--bg); overflow-x: auto; }
+.tab-btn { padding: 12px 20px; font-family: var(--mono); font-size: 12px; border: none; border-bottom: 2px solid transparent; cursor: pointer; background: transparent; color: var(--text-muted); white-space: nowrap; }
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--pul); border-bottom-color: var(--pul); }
-
 .tab-panel { display: none; padding: 20px; }
 .tab-panel.show { display: block; }
+:focus-visible { outline: 2px solid var(--pul); outline-offset: 2px; }
 
-/* PLAN CARDS */
-.plan-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 18px;
-}
+.presets { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 16px; }
+.presets span { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-right: 4px; }
+.preset { font-family: var(--mono); font-size: 11px; color: var(--text); background: var(--bg); border: 1px solid var(--border2); border-radius: 4px; padding: 5px 11px; cursor: pointer; }
+.preset:hover { border-color: var(--pul); color: var(--pul); }
 
-.plan-card {
-  background: var(--bg);
-  border: 1px solid var(--border2);
-  border-radius: var(--r);
-  padding: 16px;
-  transition: border-color 0.15s;
-  cursor: pointer;
-}
+.fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+.field { background: var(--bg); border: 1px solid var(--border2); border-radius: 6px; padding: 10px 12px; }
+.field label { display: block; font-size: 12px; color: var(--text); font-weight: 500; margin-bottom: 2px; }
+.field .hint { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; line-height: 1.4; }
+.field input[type=number] { width: 100%; background: var(--surface2); border: 1px solid var(--border2); border-radius: 4px; padding: 6px 8px; font-family: var(--mono); font-size: 14px; color: #fff; }
+.field input[type=range] { width: 100%; accent-color: var(--pul); }
+.field .val { font-family: var(--mono); font-size: 12px; color: var(--pul); }
 
-.plan-card:hover { border-color: rgba(168,85,247,0.3); }
-.plan-card.selected { border-color: var(--pul); background: var(--pul-dim2); }
+.needs { background: var(--bg); border: 1px solid var(--border2); border-radius: 6px; padding: 12px; margin-bottom: 18px; }
+.needs-title { font-size: 12px; color: var(--text); font-weight: 500; margin-bottom: 8px; }
+.needs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 14px; }
+.needs label { font-size: 12px; color: var(--text-muted); display: flex; gap: 7px; align-items: center; cursor: pointer; }
+.needs input { accent-color: var(--pul); }
 
-.pc-name { font-family: var(--mono); font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
-.pc-price { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--pul); margin-bottom: 8px; }
-.pc-price span { font-size: 11px; color: var(--text-muted); }
-.pc-feat { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
-.pc-feat strong { color: var(--text); }
+.verdict { border: 1px solid var(--border2); border-left: 3px solid var(--green); border-radius: 0 var(--r) var(--r) 0; background: var(--bg); padding: 12px 16px; margin-bottom: 14px; font-size: 14px; color: var(--text); }
+.verdict strong { color: #fff; }
 
-/* RESOURCE ESTIMATOR */
-.res-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 16px;
-}
+.ed-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+.ed { background: var(--bg); border: 1px solid var(--border2); border-radius: var(--r); padding: 14px; }
+.ed.best { border-color: var(--pul); background: var(--pul-dim2); }
+.ed.off { opacity: 0.5; }
+.ed-name { font-family: var(--mono); font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.ed-price { font-family: var(--mono); font-size: 22px; font-weight: 600; color: #fff; }
+.ed-price small { font-size: 11px; color: var(--text-dim); font-weight: 400; }
+.ed-year { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
+.ed-lines { font-size: 11px; color: var(--text-muted); line-height: 1.7; border-top: 1px solid var(--border2); padding-top: 8px; }
+.ed-lines div { display: flex; justify-content: space-between; gap: 8px; font-family: var(--mono); }
+.ed-flag { font-size: 11px; color: var(--yellow); margin-top: 8px; line-height: 1.4; }
+.ed-badge { display: inline-block; font-family: var(--mono); font-size: 10px; color: var(--pul); border: 1px solid rgba(168,85,247,.4); border-radius: 3px; padding: 1px 6px; margin-left: 6px; }
+.fine { font-size: 12px; color: var(--text-dim); max-width: none; margin: 0; }
 
-.res-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  background: var(--bg);
-  border: 1px solid var(--border2);
-  border-radius: 5px;
-}
-
-.res-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  flex: 1;
-}
-
-.res-input {
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  border-radius: 4px;
-  padding: 4px 8px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text);
-  width: 70px;
-  text-align: right;
-}
-
-.res-input:focus { outline: none; border-color: rgba(168,85,247,0.35); }
-
-.res-unit {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--text-dim);
-  width: 36px;
-}
-
-/* RESULT */
-.result-card {
-  background: var(--bg);
-  border: 1px solid var(--border2);
-  border-left: 3px solid var(--pul);
-  border-radius: 0 var(--r) var(--r) 0;
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
+/* INFRA TAB */
+.res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0 16px; }
+.res-row { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: var(--bg); border: 1px solid var(--border2); border-radius: 5px; }
+.res-label { font-family: var(--mono); font-size: 11px; color: var(--text-muted); flex: 1; }
+.res-input { background: var(--surface2); border: 1px solid var(--border2); border-radius: 4px; padding: 4px 8px; font-family: var(--mono); font-size: 12px; color: #fff; width: 76px; text-align: right; }
+.res-unit { font-family: var(--mono); font-size: 10px; color: var(--text-dim); width: 48px; }
+.result-card { background: var(--bg); border: 1px solid var(--border2); border-left: 3px solid var(--pul); border-radius: 0 var(--r) var(--r) 0; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .rc-label { font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
-.rc-val   { font-family: var(--mono); font-size: 22px; font-weight: 600; color: var(--pul); }
-.rc-note  { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
+.rc-val { font-family: var(--mono); font-size: 22px; font-weight: 600; color: var(--pul); }
+.rc-note { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
 
-/* SECTION */
-hr.divider { border: none; border-top: 1px solid var(--border2); margin: 50px 0; }
-.content-section { margin-bottom: 50px; }
+/* CONTENT */
+hr.divider { border: none; border-top: 1px solid var(--border2); margin: 44px 0; }
+.content-section { margin-bottom: 46px; }
+h2 { font-size: 20px; color: #fff; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.01em; }
+h3 { font-size: 15px; color: #fff; font-weight: 600; margin: 18px 0 6px; }
+p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 10px; max-width: 760px; }
+p strong, li strong { color: var(--text); }
+a { color: var(--pul); }
+ul.plain { margin: 6px 0 12px 18px; max-width: 760px; }
+ul.plain li { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+code { font-family: var(--mono); font-size: 12px; background: var(--surface2); color: var(--pul); padding: 2px 7px; border-radius: 3px; border: 1px solid var(--border2); }
+.code-block { background: var(--surface2); border: 1px solid var(--border2); border-left: 3px solid var(--pul); border-radius: 5px; padding: 14px 16px; font-family: var(--mono); font-size: 12px; line-height: 1.8; overflow-x: auto; white-space: pre; margin: 12px 0; color: var(--text-muted); }
 
-.sec-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
+.table-wrap { overflow-x: auto; margin: 12px 0; border: 1px solid var(--border2); border-radius: var(--r); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 620px; }
+th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--border2); color: var(--text-muted); }
+th { background: var(--surface2); color: #fff; font-weight: 600; font-size: 12px; }
+td:first-child { color: var(--text); }
+tr:last-child td { border-bottom: none; }
 
-.sec-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--pul);
-  white-space: nowrap;
-  opacity: 0.7;
-}
-
-.sec-rule { flex: 1; height: 1px; background: var(--border2); }
-
-p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 10px; max-width: 820px; }
-p strong { color: var(--text); }
-
-code {
-  font-family: var(--mono);
-  font-size: 12px;
-  background: var(--surface2);
-  color: var(--pul);
-  padding: 2px 7px;
-  border-radius: 3px;
-  border: 1px solid var(--border2);
-}
-
-.code-block {
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  border-left: 3px solid var(--pul);
-  border-radius: 5px;
-  padding: 14px 16px;
-  font-family: var(--mono);
-  font-size: 12px;
-  line-height: 1.8;
-  overflow-x: auto;
-  white-space: pre;
-  margin: 12px 0;
-  color: var(--text-muted);
-}
-
-.ck { color: var(--pul); }
-.cg { color: var(--green); }
-.cm { color: var(--text-dim); }
-.cy { color: var(--yellow); }
-
-.compare-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-
-.cg-card {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: var(--r);
-  padding: 18px;
-}
-
-.cgc-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-.cgc-body  { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
-
-.dense-block {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: var(--r);
-  padding: 22px;
-  margin-top: 14px;
-}
-
-.dense-block p { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border2); max-width: none; }
-.dense-block p:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-
-.faq-list {
-  margin-top: 14px;
-  border: 1px solid var(--border2);
-  border-radius: var(--r);
-  overflow: hidden;
-}
-
+.faq-list { margin-top: 14px; border: 1px solid var(--border2); border-radius: var(--r); overflow: hidden; }
 .faq-item { border-bottom: 1px solid var(--border2); }
 .faq-item:last-child { border-bottom: none; }
-
-.faq-q {
-  width: 100%;
-  text-align: left;
-  background: var(--surface);
-  border: none;
-  padding: 13px 18px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  font-family: var(--sans);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  transition: background 0.15s;
-}
-
+.faq-q { width: 100%; text-align: left; background: var(--surface); border: none; padding: 14px 18px; font-size: 14px; font-weight: 500; color: var(--text); font-family: var(--sans); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .faq-q:hover { background: var(--pul-dim2); }
-.faq-arrow { font-family: var(--mono); font-size: 11px; color: var(--text-dim); transition: transform 0.2s; flex-shrink: 0; }
+.faq-arrow { font-size: 11px; color: var(--text-dim); transition: transform 0.2s; }
 .faq-item.open .faq-arrow { transform: rotate(180deg); }
-
-.faq-a {
-  display: none;
-  padding: 0 18px 13px;
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.75;
-  border-top: 1px solid var(--border2);
-  background: var(--bg);
-}
-
+.faq-a { display: none; padding: 12px 18px 14px; font-size: 13px; color: var(--text-muted); line-height: 1.75; border-top: 1px solid var(--border2); background: var(--bg); }
 .faq-item.open .faq-a { display: block; }
-.faq-a code { color: var(--pul); background: var(--pul-dim2); }
 
-.subtools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.stl {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: var(--r);
-  padding: 12px 14px;
-  text-decoration: none;
-  display: block;
-  transition: border-color 0.15s;
-}
-
-.stl:hover { border-color: rgba(168,85,247,0.3); }
-.stl-eye  { font-family: var(--mono); font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+.subtools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; margin-top: 12px; }
+.stl { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r); padding: 12px 14px; text-decoration: none; display: block; }
+.stl:hover { border-color: rgba(168,85,247,0.5); }
 .stl-name { font-family: var(--mono); font-size: 12px; color: var(--pul); font-weight: 500; }
 
-.tag-cloud { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 50px; }
-
-.tag {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--text-muted);
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 100px;
-  padding: 4px 12px;
-  cursor: default;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-.tag:hover { color: var(--pul); border-color: rgba(168,85,247,0.3); }
-
 footer { border-top: 1px solid var(--border2); padding: 20px 0; position: relative; z-index: 1; }
+.footer-inner { max-width: 1060px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+footer p { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin: 0; max-width: none; }
 
-.footer-inner {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-footer p { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin: 0; }
-
-@media (max-width: 680px) {
-  .plan-grid   { grid-template-columns: 1fr; }
-  .res-grid    { grid-template-columns: 1fr; }
-  .compare-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 860px) { .ed-grid { grid-template-columns: 1fr 1fr; } .fields, .needs-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .ed-grid, .fields, .needs-grid, .res-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pulumi Cost Estimation Calculator","applicationCategory":"DeveloperApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free Pulumi cost estimation tool. Calculate Pulumi plan pricing (Free, Team, Enterprise) and estimate AWS/Azure/GCP infrastructure costs from Pulumi stacks. Includes Infracost comparison guide."}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pulumi Cloud Pricing Calculator","applicationCategory":"DeveloperApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"dateModified":"2026-10-29","description":"Free calculator to estimate your monthly Pulumi Cloud bill on the Essentials, Pro and Enterprise editions from IaC resources, ESC secrets, workflow minutes and Neo tokens."}
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Pulumi cost?","acceptedAnswer":{"@type":"Answer","text":"Pulumi has three main plans: Individual (Free) — unlimited stacks, 200 resources in Pulumi Cloud, 1 user. Team — $50/month per user (or $40/year), unlimited resources, team collaboration, OIDC, SAML SSO. Enterprise — custom pricing, includes compliance, self-hosted option, audit logs, and dedicated support. The free plan is fully functional for solo developers. Pulumi's IaC engine is open source and free — you only pay for Pulumi Cloud features like state management, deployment history, and team collaboration."}},{"@type":"Question","name":"How do I estimate infrastructure costs from Pulumi stacks?","acceptedAnswer":{"@type":"Answer","text":"Use Infracost with Pulumi: run 'infracost breakdown --path .' in your Pulumi project directory. Infracost reads your Pulumi code and generates a cost estimate for AWS, Azure, and GCP resources. It integrates with Pulumi Deployments and CI/CD pipelines to show cost diffs on pull requests. Alternatively, Pulumi has a preview pricing integration where you can see estimated costs before deploying with 'pulumi preview --suppress-outputs'."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much does Pulumi Cloud cost?","acceptedAnswer":{"@type":"Answer","text":"Pulumi Cloud has a Free edition for 1 user, then Essentials at $40/month (includes 40 credits, up to 500 managed resources), Pro at $400/month (up to 2,000 resources) and Enterprise at $2,000/month (up to 4,750 resources). Usage beyond the included credits is billed on demand: $0.1825 per IaC resource per month on Essentials, from $0.365 on Pro and from $0.5475 on Enterprise."}},
+{"@type":"Question","name":"What is a Pulumi Credit?","acceptedAnswer":{"@type":"Answer","text":"A Pulumi Credit is the single currency of Pulumi Cloud and costs $1 USD. Usage of IaC resources, ESC secrets, discovered resources, workflow minutes and Neo tokens all draw from one shared credit pool."}},
+{"@type":"Question","name":"Is Pulumi free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The open-source CLI and SDK are free, and the Pulumi Cloud Free edition supports one user with unlimited projects, stacks and updates and no limit on managed resources. You can also run a DIY backend such as S3, GCS or Azure Blob and skip Pulumi Cloud entirely."}},
+{"@type":"Question","name":"How does Pulumi count resources?","acceptedAnswer":{"@type":"Answer","text":"Every resource declared in a Pulumi program counts: provider resources (like an S3 bucket), component resources and the stack itself. Billing is hourly and a partial hour is billed as a full hour."}}
+]}
 </script>
 </head>
 
@@ -517,63 +182,105 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--text-dim); ma
 <header>
   <div class="header-inner">
     <span class="logo-pill">Pulumi</span>
-    <span class="logo-text"><strong>cost</strong>-estimation</span>
+    <span class="logo-text"><strong>cloud</strong>-pricing-calculator</span>
   </div>
 </header>
 
 <div class="wrapper">
 
   <section class="hero">
-    <p class="hero-eyebrow">// IaC Cost Planning</p>
-    <h1>Pulumi <em>Cost Estimation</em> —<br>Pricing Calculator &amp; Infrastructure Guide</h1>
+    <h1>Pulumi Cloud <em>Pricing Calculator</em></h1>
     <p class="hero-sub">
-      Calculate <strong>Pulumi plan pricing</strong> and estimate your cloud infrastructure costs from Pulumi stacks. Covers Infracost integration and cost optimization patterns.
+      Pulumi Cloud no longer charges per seat. You pay for <strong>resource-hours, secrets, workflow minutes and Neo tokens</strong>, all drawn from one pool of credits. Enter your numbers and see what <strong>Essentials, Pro and Enterprise</strong> would cost you each month.
     </p>
-    <div class="pill-row">
-      <span class="pill pill-p">Free / Team / Enterprise</span>
-      <span class="pill pill-p">AWS / GCP / Azure</span>
-      <span class="pill pill-dim">Infracost</span>
-      <span class="pill pill-dim">Cost Estimation</span>
-    </div>
+    <p class="meta-line">Rates checked against the official <a href="https://www.pulumi.com/pricing/" rel="noopener">Pulumi pricing page</a> · Updated October 2026</p>
   </section>
 
-  <!-- CALCULATOR -->
   <div class="calc-shell">
-    <div class="calc-topbar">
-      <span class="topbar-label">// Pulumi Cost Estimation Calculator</span>
-    </div>
-    <div class="tab-row">
-      <button class="tab-btn active" onclick="showTab('plan',this)">Pulumi Plan Pricing</button>
-      <button class="tab-btn" onclick="showTab('infra',this)">Infrastructure Cost Estimator</button>
+    <div class="tab-row" role="tablist">
+      <button class="tab-btn active" role="tab" onclick="showTab('plan',this)">Pulumi Cloud cost</button>
+      <button class="tab-btn" role="tab" onclick="showTab('infra',this)">AWS infrastructure estimator</button>
     </div>
 
-    <!-- PLAN TAB -->
+    <!-- PULUMI CLOUD CALC -->
     <div class="tab-panel show" id="tab-plan">
-      <div class="plan-grid" id="planGrid"></div>
-      <div style="margin-bottom:14px;">
-        <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Team members (Team plan)</div>
-        <input type="range" min="1" max="50" value="5" id="memberSlider" style="width:100%;height:4px;-webkit-appearance:none;background:var(--border2);border-radius:2px;outline:none;" oninput="updatePlanCalc()">
-        <div style="font-family:var(--mono);font-size:12px;color:var(--pul);margin-top:4px;" id="memberLabel">5 members</div>
+      <div class="presets">
+        <span>Quick start:</span>
+        <button class="preset" onclick="preset(30,1,5,0,0,0)">Side project</button>
+        <button class="preset" onclick="preset(400,5,40,0,200,0)">Small team</button>
+        <button class="preset" onclick="preset(1500,15,150,3000,1500,2)">Growing startup</button>
+        <button class="preset" onclick="preset(6000,60,600,20000,6000,10)">Large org</button>
       </div>
-      <div class="result-card" id="planResult">
-        <div>
-          <div class="rc-label">Estimated monthly cost</div>
-          <div class="rc-val" id="planCost">$0 / month</div>
+
+      <div class="fields">
+        <div class="field">
+          <label for="f-res">IaC resources</label>
+          <div class="hint">Everything declared in your programs, including stacks. <a href="#count">How to count</a></div>
+          <input type="number" id="f-res" min="0" value="400">
         </div>
-        <div style="text-align:right;">
-          <div class="rc-note" id="planNote">Individual plan selected</div>
-          <div class="rc-note" id="planAnnual"></div>
+        <div class="field">
+          <label for="f-util">Average time resources exist</label>
+          <div class="hint">100% = always running. Ephemeral preview stacks lower this.</div>
+          <input type="range" id="f-util" min="5" max="100" step="5" value="100">
+          <div class="val" id="v-util">100% of the month</div>
+        </div>
+        <div class="field">
+          <label for="f-users">Users</label>
+          <div class="hint">Free is limited to 1 user. Paid editions are not billed per seat.</div>
+          <input type="number" id="f-users" min="1" value="5">
+        </div>
+        <div class="field">
+          <label for="f-sec">ESC secrets</label>
+          <div class="hint">Static and dynamic secrets in Pulumi ESC environments.</div>
+          <input type="number" id="f-sec" min="0" value="40">
+        </div>
+        <div class="field">
+          <label for="f-disc">Discovered resources</label>
+          <div class="hint">Cloud resources found by account discovery (not managed by Pulumi).</div>
+          <input type="number" id="f-disc" min="0" value="0">
+        </div>
+        <div class="field">
+          <label for="f-wf">Workflow minutes / month</label>
+          <div class="hint">Deployments and discovery runs.</div>
+          <input type="number" id="f-wf" min="0" value="200">
+        </div>
+        <div class="field">
+          <label for="f-neo">Neo tokens (millions / month)</label>
+          <div class="hint">Pulumi's AI agent. $3 per million tokens.</div>
+          <input type="number" id="f-neo" min="0" step="0.5" value="0">
+        </div>
+        <div class="field">
+          <label for="f-api">ESC API calls (thousands / month)</label>
+          <div class="hint">First 10K are free, then $0.10 per 10K.</div>
+          <input type="number" id="f-api" min="0" value="10">
         </div>
       </div>
+
+      <div class="needs">
+        <div class="needs-title">Features you need (sets the minimum edition)</div>
+        <div class="needs-grid">
+          <label><input type="checkbox" class="need" data-min="1" data-name="Resource search / Neo / discovery"> Resource search, Neo or discovery</label>
+          <label><input type="checkbox" class="need" data-min="2" data-name="SAML/SSO"> SAML / SSO</label>
+          <label><input type="checkbox" class="need" data-min="2" data-name="Teams and RBAC"> Teams and RBAC</label>
+          <label><input type="checkbox" class="need" data-min="2" data-name="Audit logs"> Audit logs</label>
+          <label><input type="checkbox" class="need" data-min="2" data-name="Drift detection"> Drift detection</label>
+          <label><input type="checkbox" class="need" data-min="3" data-name="SCIM"> SCIM user sync</label>
+          <label><input type="checkbox" class="need" data-min="3" data-name="Self-hosting"> Self-hosted Pulumi Cloud</label>
+        </div>
+      </div>
+
+      <div class="verdict" id="verdict" aria-live="polite"></div>
+      <div class="ed-grid" id="edGrid"></div>
+      <p class="fine">List prices, excluding tax, commitment discounts and volume pricing. Monthly figure = the larger of the edition's base fee (which prepays credits) and your actual usage, because usage above the prepaid credits is billed on demand. Pro and Enterprise resource rates are "starting at", so treat results as an upper bound. For exact numbers use Pulumi's own <a href="https://www.pulumi.com/pricing/#calculator" rel="noopener">estimator</a> or contact sales.</p>
     </div>
 
     <!-- INFRA TAB -->
     <div class="tab-panel" id="tab-infra">
-      <p style="font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-bottom:14px;max-width:none;">Estimate AWS resource costs for resources managed by Pulumi. Based on us-east-1 on-demand pricing.</p>
+      <p class="fine">This is the bill from AWS for the resources your Pulumi stacks create, separate from the Pulumi Cloud fee above. Approximate us-east-1 on-demand prices.</p>
       <div class="res-grid" id="resGrid"></div>
       <div class="result-card">
         <div>
-          <div class="rc-label">Estimated infrastructure / month</div>
+          <div class="rc-label">Estimated AWS infrastructure / month</div>
           <div class="rc-val" id="infraCost">$0.00 / month</div>
         </div>
         <div style="text-align:right;">
@@ -586,245 +293,239 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--text-dim); ma
 
   <hr class="divider">
 
-  <!-- INFRACOST SECTION -->
-  <section class="content-section">
-    <div class="sec-head">
-      <span class="sec-label">Infracost + Pulumi — automated cost estimation</span>
-      <span class="sec-rule"></span>
+  <section class="content-section" id="pricing">
+    <h2>Pulumi Cloud pricing by edition</h2>
+    <p>Pulumi replaced its old per-user plan with <strong>credits</strong>. One credit costs $1 and every billable unit draws from the same pool. Each paid edition charges a monthly base fee that creates the pool; if you use more, the overage is billed in arrears at the same rates.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Edition</th><th>Base / month</th><th>Includes</th><th>IaC resource / month</th><th>ESC secret / month</th></tr></thead>
+        <tbody>
+          <tr><td>Free</td><td>$0</td><td>1 user, unlimited stacks and updates, 500 workflow min</td><td>Free</td><td>25 free</td></tr>
+          <tr><td>Essentials</td><td>$40</td><td>40 credits, up to 500 resources, unlimited users</td><td>$0.1825</td><td>$0.50</td></tr>
+          <tr><td>Pro</td><td>$400</td><td>400 credits, up to 2,000 resources, SSO, RBAC, audit logs</td><td>from $0.365</td><td>$0.75</td></tr>
+          <tr><td>Enterprise</td><td>$2,000</td><td>2,000 credits, up to 4,750 resources, SCIM, self-hosting</td><td>from $0.5475</td><td>$1.00</td></tr>
+        </tbody>
+      </table>
     </div>
-    <p>Infracost is the most popular open-source tool for estimating infrastructure costs from IaC code. It supports Pulumi (TypeScript, Python, Go, .NET) and integrates into CI/CD pipelines.</p>
+    <p>Other units: discovered resource $0.0185 (Essentials) to $0.05475 (Enterprise) per month, workflow minute $0.01, Neo $3 per million tokens, ESC API calls $0.10 per 10K after the first 10K.</p>
 
-    <div class="code-block"><span class="cm"># ─── INSTALL INFRACOST ───</span>
-<span class="ck">brew</span> install infracost          <span class="cm"># macOS</span>
-<span class="cm"># or: curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh</span>
-
-<span class="cm"># ─── REGISTER (FREE API KEY) ───</span>
-<span class="ck">infracost</span> auth login
-
-<span class="cm"># ─── ESTIMATE PULUMI STACK COSTS ───</span>
-<span class="ck">cd</span> my-pulumi-project/
-<span class="ck">infracost</span> breakdown --path .
-
-<span class="cm"># ─── PULUMI PREVIEW + INFRACOST DIFF ───</span>
-<span class="ck">infracost</span> diff --path . --compare-to infracost-base.json
-
-<span class="cm"># ─── OUTPUT FORMATS ───</span>
-<span class="ck">infracost</span> breakdown --path . --format json --out-file estimate.json
-<span class="ck">infracost</span> output --path estimate.json --format html --out-file report.html
-
-<span class="cm"># ─── GITHUB ACTIONS CI/CD INTEGRATION ───</span>
-<span class="cm"># Add to your workflow — shows cost diff on every PR</span>
-<span class="cy">uses: infracost/actions/setup@v3</span>
-<span class="ck">with</span>:
-  api-key: <span class="cg">${{ secrets.INFRACOST_API_KEY }}</span></div>
-
-    <div class="compare-grid">
-      <div class="cg-card">
-        <p class="cgc-title" style="color:var(--pul);">Infracost for Pulumi</p>
-        <p class="cgc-body">Open source. Supports TypeScript, Python, Go, C# Pulumi programs. Shows cost per resource. Integrates with GitHub, GitLab, Bitbucket PRs. Shows cost diff before merge. Free tier: 150 runs/month.</p>
-      </div>
-      <div class="cg-card">
-        <p class="cgc-title" style="color:var(--blue);">Pulumi Cloud Cost Integration</p>
-        <p class="cgc-body">Pulumi Cloud (Team plan+) shows cost estimates inline in the Pulumi UI after deploying. Uses cloud provider billing APIs. Less granular than Infracost pre-deployment — better for post-deployment tracking.</p>
-      </div>
-    </div>
+    <h3>Does this match what you saw before?</h3>
+    <p>Older articles mention $0.0005 per credit, 150,000 free credits per month, or a flat $50 per user. Those describe previous Team and Starter plans. The calculator above uses the current Free, Essentials, Pro and Enterprise structure.</p>
   </section>
 
-  <!-- GUIDE -->
-  <section class="content-section">
-    <div class="sec-head">
-      <span class="sec-label">Pulumi pricing guide</span>
-      <span class="sec-rule"></span>
-    </div>
-    <div class="dense-block">
-      <p><strong>Is Pulumi free? What does the free plan include?</strong><br>
-      Yes — Pulumi's IaC engine is fully <strong>open source and free</strong>. You can deploy, update, and destroy infrastructure without paying anything. The free Individual plan on Pulumi Cloud includes unlimited stacks, 200 managed resources in Pulumi Cloud state, 1 user, 500 deployment minutes/month, and community support. For state storage, you can use your own S3 bucket, GCS bucket, or Azure Blob Storage as a free backend instead of Pulumi Cloud entirely.</p>
-      <p><strong>When does the Team plan make sense?</strong><br>
-      The Team plan ($50/user/month, $40 billed annually) adds: unlimited resources in Pulumi Cloud, team collaboration with RBAC, OIDC for GitHub Actions/GitLab CI, secrets management, deployment history, and SAML SSO. It pays for itself when you have 2+ engineers who need to share state and collaborate on stacks. If you use a self-managed backend (S3/GCS), you avoid Pulumi Cloud costs entirely but lose deployment history, drift detection, and the team UI.</p>
-      <p><strong>Self-hosted backend — the free alternative</strong><br>
-      Store Pulumi state in your own S3 bucket: <code>pulumi login s3://my-state-bucket</code>. This gives you unlimited resources, unlimited team members (for state only), and full control — at no cost beyond S3 storage (~$0.02/GB/month). The tradeoff: no Pulumi Cloud UI, no deployment history, no drift detection. Teams using Terraform state in S3 already know this pattern — it works identically for Pulumi.</p>
-    </div>
+  <section class="content-section" id="count">
+    <h2>How Pulumi counts billable resources</h2>
+    <ul class="plain">
+      <li><strong>Everything declared counts.</strong> Provider resources (an S3 bucket), component resources (an EKS cluster grouping) and the stack itself.</li>
+      <li><strong>Billing is hourly.</strong> A partial hour is billed as a full hour, so short-lived preview stacks cost proportionally less than permanent ones.</li>
+      <li><strong>Real examples from Pulumi:</strong> a serverless API on API Gateway and Lambda is about 9 resources, EKS in a VPC about 20, ECS with RDS in a VPC about 24.</li>
+    </ul>
+    <p>To count your own, open the "Resource Count over Time" graph in the Pulumi Cloud dashboard. With a DIY backend, export the state and count the URNs:</p>
+    <div class="code-block">pulumi stack export | grep -c '"urn"'</div>
   </section>
 
-  <!-- FAQ -->
-  <section class="content-section">
-    <div class="sec-head">
-      <span class="sec-label">FAQ — Pulumi cost estimation</span>
-      <span class="sec-rule"></span>
-    </div>
+  <section class="content-section" id="free">
+    <h2>Using Pulumi for free</h2>
+    <p><strong>Pulumi Cloud Free.</strong> One user, automatic state management, Deployments, basic ESC, unlimited projects, stacks, updates and history, and no cap on managed resources. It does not include Neo, Resource Search or Property Search.</p>
+    <p><strong>Open source with your own backend.</strong> The CLI and SDK are open source. Store state in your own bucket and pay only for storage:</p>
+    <div class="code-block">pulumi login s3://my-state-bucket      <span style="color:var(--text-dim)"># AWS</span>
+pulumi login gs://my-state-bucket      <span style="color:var(--text-dim)"># Google Cloud</span>
+pulumi login azblob://my-container     <span style="color:var(--text-dim)"># Azure</span></div>
+    <p>The trade-off is that you manage state, locking and secrets yourself and lose the Pulumi Cloud UI, Deployments, drift detection and ESC.</p>
+  </section>
+
+  <section class="content-section" id="faq">
+    <h2>Pulumi Cloud pricing FAQ</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How much does Pulumi cost?<span class="faq-arrow">&#9660;</span></button>
-        <div class="faq-a">Pulumi has three tiers: <strong>Individual (Free)</strong> — open source IaC engine, 200 resources in Pulumi Cloud, 1 user. <strong>Team</strong> — $50/user/month ($40 annual), unlimited resources, RBAC, OIDC, SAML SSO, deployment history. <strong>Enterprise</strong> — custom pricing, self-hosted option, audit logs, compliance controls. The IaC engine itself is always free. You pay for Pulumi Cloud features: state management, team UI, and deployment automation.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">How much does Pulumi Cloud cost?<span class="faq-arrow">&#9660;</span></button>
+        <div class="faq-a">Free for one user. Essentials is $40/month with 40 credits (up to 500 managed resources), Pro is $400/month (up to 2,000 resources) and Enterprise is $2,000/month (up to 4,750 resources). Beyond the included credits, an IaC resource costs $0.1825/month on Essentials, from $0.365 on Pro and from $0.5475 on Enterprise.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How do I estimate infrastructure costs from my Pulumi stack?<span class="faq-arrow">&#9660;</span></button>
-        <div class="faq-a">Use <strong>Infracost</strong> — the most popular open-source tool for this: install with <code>brew install infracost</code>, run <code>infracost auth login</code>, then <code>infracost breakdown --path .</code> in your Pulumi project. It reads your Pulumi TypeScript/Python/Go/C# code and generates cost estimates for AWS, Azure, and GCP resources. Add it to CI/CD (GitHub Actions, GitLab) to show cost diffs on every pull request before infrastructure changes are applied.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">What is a Pulumi Credit?<span class="faq-arrow">&#9660;</span></button>
+        <div class="faq-a">The single currency of Pulumi Cloud, worth $1 USD. Resources, secrets, discovery, workflow minutes and Neo tokens all draw from one pool. Unused monthly credits expire at the end of the term, and overage is billed in arrears.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is Pulumi still priced per user?<span class="faq-arrow">&#9660;</span></button>
+        <div class="faq-a">No. Paid editions have unlimited users and bill on usage. The Free edition is limited to one user. Features such as SSO, RBAC and audit logs depend on edition, not seat count.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Can I use Pulumi without paying for Pulumi Cloud?<span class="faq-arrow">&#9660;</span></button>
-        <div class="faq-a">Yes. Use a self-managed state backend instead of Pulumi Cloud: <code>pulumi login s3://your-state-bucket</code> (AWS), <code>pulumi login gs://your-bucket</code> (GCP), or <code>pulumi login azblob://your-container</code> (Azure). This gives you unlimited resources and team members at no Pulumi cost. You only pay for the storage (~pennies). The trade-off: no Pulumi Cloud UI, no deployment history, no drift detection. For small teams already using cloud storage, this is a common zero-cost setup.</div>
+        <div class="faq-a">Yes. Use the Free edition, or run the open-source CLI with a DIY backend (<code>pulumi login s3://your-bucket</code>). You then pay only your cloud storage costs.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Pulumi vs Terraform cost — which is cheaper to operate?<span class="faq-arrow">&#9660;</span></button>
-        <div class="faq-a">Both are free for the core engine (Pulumi is open source, Terraform/OpenTofu is open source). For cloud state: both support S3/GCS/Azure Blob as free backends. For commercial platforms: Pulumi Cloud Team is $50/user/month; Terraform Cloud Teams (HCP) starts at $20/user/month — Terraform is cheaper for the platform tier. However, Pulumi's self-managed backend is fully free with no resource or user limits, while HCP Terraform has limits on the free tier. For pure IaC without a commercial platform, costs are equivalent.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">When does Pro or Enterprise make sense over Essentials?<span class="faq-arrow">&#9660;</span></button>
+        <div class="faq-a">Pro adds SAML/SSO, teams and RBAC, audit logs, drift detection and organization-managed policy. Enterprise adds SCIM, self-hosting and compliance policy packs. If you do not need those, Essentials is cheaper at every resource count. Use the feature checkboxes in the calculator to see the cost of the minimum edition that fits.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I get a discount?<span class="faq-arrow">&#9660;</span></button>
+        <div class="faq-a">Annual commitment pricing is available on Pro and Enterprise through Pulumi sales. Pro also receives volume discounts as resource count grows. Self-service credit top-ups are available on Essentials and Pro.</div>
       </div>
     </div>
   </section>
 
   <section class="content-section">
-    <div class="sec-head">
-      <span class="sec-label">Pulumi tools</span>
-      <span class="sec-rule"></span>
-    </div>
+    <h2>More Pulumi tools</h2>
     <div class="subtools-grid">
-      <a href="pulumi-tools/cost/" class="stl"><p class="stl-eye">cost //</p><span class="stl-name">Cost Analyzer</span></a>
-      <a href="pulumi-tools/deploy-analyzer/" class="stl"><p class="stl-eye">deploy //</p><span class="stl-name">Deployment Analyzer</span></a>
-      <a href="pulumi-tools/stack-vis/" class="stl"><p class="stl-eye">stack //</p><span class="stl-name">Stack Visualizer</span></a>
-      <a href="pulumi-tools/policy/" class="stl"><p class="stl-eye">policy //</p><span class="stl-name">Policy Validator</span></a>
-      <a href="pulumi-tools/multi-cloud/" class="stl"><p class="stl-eye">cloud //</p><span class="stl-name">Multi-Cloud Tool</span></a>
-      <a href="pulumi-tools/preview/" class="stl"><p class="stl-eye">preview //</p><span class="stl-name">Preview Tool</span></a>
+      <a href="pulumi-tools/cost/" class="stl"><span class="stl-name">Cost Analyzer</span></a>
+      <a href="pulumi-tools/deploy-analyzer/" class="stl"><span class="stl-name">Deployment Analyzer</span></a>
+      <a href="pulumi-tools/stack-vis/" class="stl"><span class="stl-name">Stack Visualizer</span></a>
+      <a href="pulumi-tools/policy/" class="stl"><span class="stl-name">Policy Validator</span></a>
+      <a href="pulumi-tools/multi-cloud/" class="stl"><span class="stl-name">Multi-Cloud Tool</span></a>
+      <a href="pulumi-tools/preview/" class="stl"><span class="stl-name">Preview Tool</span></a>
     </div>
   </section>
-
-  <div class="tag-cloud">
-    <span class="tag">pulumi cost estimation</span>
-    <span class="tag">pulumi pricing calculator</span>
-    <span class="tag">pulumi free vs team</span>
-    <span class="tag">infracost pulumi</span>
-    <span class="tag">pulumi infrastructure cost</span>
-    <span class="tag">pulumi self-hosted backend</span>
-    <span class="tag">pulumi vs terraform cost</span>
-    <span class="tag">pulumi enterprise pricing</span>
-    <span class="tag">pulumi cloud plan</span>
-    <span class="tag">pulumi s3 state backend</span>
-  </div>
-
 </div>
 
 <footer>
   <div class="footer-inner">
-    <p>pulumi-cost-estimation &middot; pricing calculator &middot; infracost &middot; free</p>
-    <p>iac cost planning &middot; github pages</p>
+    <p>Independent calculator, not affiliated with Pulumi Corporation.</p>
+    <p>Source: pulumi.com/pricing · verify before purchasing</p>
   </div>
 </footer>
 
 <script>
-// ─── PLANS ───
-var PLANS = [
-  {
-    id: 'free',
-    name: 'Individual',
-    basePrice: 0,
-    perUser: 0,
-    label: 'Free forever',
-    features: '<strong>200 resources</strong> in Pulumi Cloud\n1 user\n500 deployment min/month\nCommunity support\nOpen source IaC engine'
-  },
-  {
-    id: 'team',
-    name: 'Team',
-    basePrice: 50,
-    perUser: 50,
-    label: '$50/user/month',
-    features: '<strong>Unlimited resources</strong>\nUnlimited users\nRBAC + team management\nOIDC (GitHub Actions, etc)\nSAML SSO\nDeployment history'
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise',
-    basePrice: -1,
-    perUser: 0,
-    label: 'Custom pricing',
-    features: 'Self-hosted option\nAudit logs\nCompliance controls\nDedicated support\nCustom SLA\nAll Team features'
-  }
+// ─── EDITIONS (rates per month, from pulumi.com/pricing) ───
+var EDITIONS = [
+  { id: 'free', name: 'Free', level: 0, base: 0 },
+  { id: 'ess',  name: 'Essentials', level: 1, base: 40,   iac: 0.1825, sec: 0.50, disc: 0.0185,  wf: 0.01, neo: 3, cap: 500 },
+  { id: 'pro',  name: 'Pro',        level: 2, base: 400,  iac: 0.365,  sec: 0.75, disc: 0.0365,  wf: 0.01, neo: 3, cap: 2000 },
+  { id: 'ent',  name: 'Enterprise', level: 3, base: 2000, iac: 0.5475, sec: 1.00, disc: 0.05475, wf: 0.01, neo: 3, cap: 4750 }
 ];
 
-var selectedPlan = 'free';
+function $(id) { return document.getElementById(id); }
+function num(id) { var v = parseFloat($(id).value); return isNaN(v) || v < 0 ? 0 : v; }
+function money(n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function money0(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
 
-function renderPlanCards() {
-  var grid = document.getElementById('planGrid');
-  grid.innerHTML = '';
-  PLANS.forEach(function(plan) {
-    var card = document.createElement('div');
-    card.className = 'plan-card' + (plan.id === selectedPlan ? ' selected' : '');
-    card.onclick = function() { selectedPlan = plan.id; renderPlanCards(); updatePlanCalc(); };
-    var html = '<div class="pc-name">' + plan.name + '</div>';
-    if (plan.basePrice === -1) {
-      html += '<div class="pc-price">Custom</div>';
-    } else if (plan.basePrice === 0) {
-      html += '<div class="pc-price">$0 <span>/ month</span></div>';
-    } else {
-      html += '<div class="pc-price">$' + plan.basePrice + ' <span>/ user/mo</span></div>';
-    }
-    html += '<div class="pc-feat">' + plan.features.replace(/\n/g, '<br>') + '</div>';
-    card.innerHTML = html;
-    grid.appendChild(card);
+function minLevelNeeded(inp) {
+  var lvl = 0, reasons = [];
+  if (inp.users > 1) { lvl = Math.max(lvl, 1); reasons.push('more than 1 user'); }
+  if (inp.disc > 0 || inp.neo > 0) { lvl = Math.max(lvl, 1); reasons.push('discovery or Neo'); }
+  if (inp.sec > 25) { lvl = Math.max(lvl, 1); reasons.push('more than 25 secrets'); }
+  if (inp.wf > 500) { lvl = Math.max(lvl, 1); reasons.push('over 500 workflow minutes'); }
+  if (inp.api > 10) { lvl = Math.max(lvl, 1); reasons.push('over 10K API calls'); }
+  document.querySelectorAll('.need:checked').forEach(function(c) {
+    var m = parseInt(c.getAttribute('data-min'), 10);
+    if (m > lvl) { lvl = m; }
+    if (m > 0) { reasons.push(c.getAttribute('data-name')); }
   });
+  return { level: lvl, reasons: reasons };
+}
+
+function usageFor(ed, inp) {
+  var iac = inp.res * (inp.util / 100) * ed.iac;
+  var sec = inp.sec * ed.sec;
+  var disc = inp.disc * ed.disc;
+  var wf = inp.wf * ed.wf;
+  var neo = inp.neo * ed.neo;
+  var api = Math.max(0, inp.api * 1000 - 10000) / 10000 * 0.10;
+  return { iac: iac, sec: sec, disc: disc, wf: wf, neo: neo, api: api, total: iac + sec + disc + wf + neo + api };
 }
 
 function updatePlanCalc() {
-  var members = parseInt(document.getElementById('memberSlider').value);
-  document.getElementById('memberLabel').textContent = members + ' member' + (members === 1 ? '' : 's');
-  var plan = PLANS.find(function(p) { return p.id === selectedPlan; });
-  var costEl   = document.getElementById('planCost');
-  var noteEl   = document.getElementById('planNote');
-  var annualEl = document.getElementById('planAnnual');
+  var inp = {
+    res: num('f-res'), util: num('f-util'), users: Math.max(1, num('f-users')),
+    sec: num('f-sec'), disc: num('f-disc'), wf: num('f-wf'), neo: num('f-neo'), api: num('f-api')
+  };
+  $('v-util').textContent = inp.util + '% of the month';
+  var need = minLevelNeeded(inp);
 
-  if (plan.basePrice === -1) {
-    costEl.textContent = 'Contact sales';
-    noteEl.textContent = 'Enterprise plan selected';
-    annualEl.textContent = '';
-  } else if (plan.basePrice === 0) {
-    costEl.textContent = '$0 / month';
-    noteEl.textContent = 'Individual plan — always free';
-    annualEl.textContent = 'Open source IaC engine included';
+  var results = EDITIONS.map(function(ed) {
+    if (ed.level === 0) { return { ed: ed, total: 0, eligible: need.level === 0, u: null }; }
+    var u = usageFor(ed, inp);
+    return { ed: ed, total: Math.max(ed.base, u.total), eligible: ed.level >= need.level, u: u };
+  });
+
+  var best = null;
+  results.forEach(function(r) {
+    if (r.eligible && (best === null || r.total < best.total)) { best = r; }
+  });
+
+  var grid = $('edGrid');
+  grid.innerHTML = '';
+  results.forEach(function(r) {
+    var card = document.createElement('div');
+    card.className = 'ed' + (r === best ? ' best' : '') + (!r.eligible ? ' off' : '');
+    var h = '<div class="ed-name">' + r.ed.name + (r === best ? '<span class="ed-badge">best fit</span>' : '') + '</div>';
+    h += '<div class="ed-price">' + money0(r.total) + '<small> /mo</small></div>';
+    h += '<div class="ed-year">' + money0(r.total * 12) + ' / year</div>';
+    if (r.u) {
+      var overage = Math.max(0, r.u.total - r.ed.base);
+      h += '<div class="ed-lines">';
+      h += '<div><span>Base fee</span><span>' + money0(r.ed.base) + '</span></div>';
+      h += '<div><span>IaC resources</span><span>' + money(r.u.iac) + '</span></div>';
+      if (r.u.sec) { h += '<div><span>Secrets</span><span>' + money(r.u.sec) + '</span></div>'; }
+      if (r.u.disc) { h += '<div><span>Discovery</span><span>' + money(r.u.disc) + '</span></div>'; }
+      if (r.u.wf) { h += '<div><span>Workflows</span><span>' + money(r.u.wf) + '</span></div>'; }
+      if (r.u.neo) { h += '<div><span>Neo</span><span>' + money(r.u.neo) + '</span></div>'; }
+      if (r.u.api) { h += '<div><span>API calls</span><span>' + money(r.u.api) + '</span></div>'; }
+      h += '<div><span>Billed above base</span><span>' + money(overage) + '</span></div>';
+      h += '</div>';
+      if (inp.res > r.ed.cap) { h += '<div class="ed-flag">Over ' + r.ed.cap.toLocaleString() + ' included resources. Volume pricing may lower this.</div>'; }
+    } else {
+      h += '<div class="ed-lines">One user, no cap on resources, 25 secrets, 500 workflow minutes.</div>';
+    }
+    if (!r.eligible) {
+      h += '<div class="ed-flag">Does not cover: ' + need.reasons.join(', ') + '</div>';
+    }
+    card.innerHTML = h;
+    grid.appendChild(card);
+  });
+
+  var v = $('verdict');
+  if (best && best.ed.level === 0) {
+    v.innerHTML = '<strong>You can stay on Free.</strong> Your numbers fit the Free edition, so Pulumi Cloud costs $0.';
+  } else if (best) {
+    var extra = '';
+    var free = results[0];
+    if (free.eligible === false && need.level === 1 && inp.users > 1) {
+      extra = ' You need a paid edition mainly for more than one user.';
+    }
+    v.innerHTML = '<strong>' + best.ed.name + ' fits you: about ' + money0(best.total) + ' per month</strong> (' + money0(best.total * 12) + ' per year).' + extra;
   } else {
-    var monthly = plan.perUser * members;
-    var annual  = plan.perUser * 0.8 * members * 12;
-    costEl.textContent = '$' + monthly.toLocaleString() + ' / month';
-    noteEl.textContent = members + ' users × $' + plan.perUser + '/user';
-    annualEl.textContent = '$' + Math.round(annual).toLocaleString() + '/year billed annually (20% off)';
+    v.innerHTML = '<strong>Contact Pulumi sales.</strong> No edition matches this combination.';
   }
 }
 
-// ─── INFRA ESTIMATOR ───
-var RESOURCES = [
-  { id: 'ec2_t3m',   label: 'EC2 t3.medium',      unit: 'instances', price: 30.37 },
-  { id: 'ec2_t3l',   label: 'EC2 t3.large',        unit: 'instances', price: 60.74 },
-  { id: 'rds_t3m',   label: 'RDS db.t3.medium',    unit: 'instances', price: 50.40 },
-  { id: 'rds_t3l',   label: 'RDS db.t3.large',     unit: 'instances', price: 100.80 },
-  { id: 's3_gb',     label: 'S3 Storage',           unit: 'GB',        price: 0.023 },
-  { id: 'lb',        label: 'ALB Load Balancer',    unit: 'count',     price: 16.20 },
-  { id: 'lambda',    label: 'Lambda (1M invocations)', unit: 'M/month', price: 0.20 },
-  { id: 'eks_node',  label: 'EKS Worker (t3.medium)',  unit: 'nodes',  price: 30.37 },
-  { id: 'ebs_gp3',   label: 'EBS gp3',              unit: 'GB',        price: 0.08 },
-  { id: 'cf',        label: 'CloudFront',           unit: 'GB xfr',    price: 0.085 }
-];
+function preset(res, users, sec, disc, wf, neo) {
+  $('f-res').value = res; $('f-users').value = users; $('f-sec').value = sec;
+  $('f-disc').value = disc; $('f-wf').value = wf; $('f-neo').value = neo;
+  $('f-util').value = 100;
+  updatePlanCalc();
+}
 
+// ─── AWS INFRA ESTIMATOR ───
+var RESOURCES = [
+  { id: 'ec2_t3m', label: 'EC2 t3.medium',          unit: 'inst.',  price: 30.37 },
+  { id: 'ec2_t3l', label: 'EC2 t3.large',           unit: 'inst.',  price: 60.74 },
+  { id: 'rds_t3m', label: 'RDS db.t3.medium',       unit: 'inst.',  price: 50.40 },
+  { id: 'rds_t3l', label: 'RDS db.t3.large',        unit: 'inst.',  price: 100.80 },
+  { id: 's3_gb',   label: 'S3 storage',             unit: 'GB',     price: 0.023 },
+  { id: 'lb',      label: 'ALB load balancer',      unit: 'count',  price: 16.20 },
+  { id: 'lambda',  label: 'Lambda (1M invocations)', unit: 'M/mo',  price: 0.20 },
+  { id: 'eks',     label: 'EKS worker (t3.medium)', unit: 'nodes',  price: 30.37 },
+  { id: 'ebs',     label: 'EBS gp3',                unit: 'GB',     price: 0.08 },
+  { id: 'cf',      label: 'CloudFront transfer',    unit: 'GB',     price: 0.085 }
+];
 var resValues = {};
-RESOURCES.forEach(function(r) { resValues[r.id] = 0; });
 
 function renderResources() {
-  var grid = document.getElementById('resGrid');
-  grid.innerHTML = '';
+  var grid = $('resGrid');
   RESOURCES.forEach(function(res) {
+    resValues[res.id] = 0;
     var row = document.createElement('div');
     row.className = 'res-row';
-    var lbl = document.createElement('div');
+    var lbl = document.createElement('label');
     lbl.className = 'res-label';
+    lbl.htmlFor = 'inp-' + res.id;
     lbl.textContent = res.label;
     var inp = document.createElement('input');
-    inp.type = 'number';
-    inp.min = '0';
-    inp.value = '0';
-    inp.className = 'res-input';
-    inp.id = 'inp-' + res.id;
-    inp.oninput = function() {
-      resValues[res.id] = parseFloat(this.value) || 0;
-      updateInfraCost();
-    };
+    inp.type = 'number'; inp.min = '0'; inp.value = '0';
+    inp.className = 'res-input'; inp.id = 'inp-' + res.id;
+    inp.oninput = function() { resValues[res.id] = parseFloat(this.value) || 0; updateInfraCost(); };
     var unit = document.createElement('div');
-    unit.className = 'res-unit';
-    unit.textContent = res.unit;
+    unit.className = 'res-unit'; unit.textContent = res.unit;
     row.appendChild(lbl); row.appendChild(inp); row.appendChild(unit);
     grid.appendChild(row);
   });
@@ -832,38 +533,27 @@ function renderResources() {
 
 function updateInfraCost() {
   var total = 0;
-  RESOURCES.forEach(function(res) {
-    total += (resValues[res.id] || 0) * res.price;
-  });
-  document.getElementById('infraCost').textContent = '$' + total.toFixed(2) + ' / month';
-  document.getElementById('infraAnnual').textContent = total > 0 ? '~$' + Math.round(total * 12).toLocaleString() + ' / year' : '';
+  RESOURCES.forEach(function(r) { total += (resValues[r.id] || 0) * r.price; });
+  $('infraCost').textContent = money(total) + ' / month';
+  $('infraAnnual').textContent = total > 0 ? '~' + money0(total * 12) + ' / year' : '';
 }
 
 function showTab(tab, btn) {
   document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
   document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('show'); });
   btn.classList.add('active');
-  document.getElementById('tab-' + tab).classList.add('show');
+  $('tab-' + tab).classList.add('show');
 }
-
-function toggleFaq(btn) {
-  btn.parentElement.classList.toggle('open');
-}
+function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
 
 // Init
-renderPlanCards();
-updatePlanCalc();
+['f-res','f-util','f-users','f-sec','f-disc','f-wf','f-neo','f-api'].forEach(function(id) {
+  $(id).addEventListener('input', updatePlanCalc);
+});
+document.querySelectorAll('.need').forEach(function(c) { c.addEventListener('change', updatePlanCalc); });
 renderResources();
-
-// Style the slider
-var slider = document.getElementById('memberSlider');
-if (slider) {
-  slider.style.cursor = 'pointer';
-  slider.addEventListener('mouseover', function() {
-    this.style.accentColor = 'var(--pul)';
-  });
-}
+updateInfraCost();
+updatePlanCalc();
 </script>
-
 </body>
 </html>
